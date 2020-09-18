@@ -3,4 +3,4 @@ server:
 
 redis:
   host: ${REDISTOGO_URL:localhost}
-  port: 10641
+  port: ${REDISTOGO_PORT:6379}
