@@ -1,0 +1,6 @@
+server:
+  port: 8095
+
+redis:
+  host: redis://redistogo:22354222a39f0bb3f65573ecc957ef65@soapfish.redistogo.com
+  port: 10641

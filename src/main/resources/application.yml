@@ -1,0 +1,6 @@
+server:
+  port: 8095
+
+redis:
+  host: localhost
+  port: 6379
