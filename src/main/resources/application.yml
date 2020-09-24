@@ -4,3 +4,12 @@ server:
 redis:
   host: localhost
   port: 6379
+
+spring:
+  datasource:
+    url: jdbc:h2:file:/opt/jpadb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: mypass
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
