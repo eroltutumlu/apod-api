@@ -1,6 +1,18 @@
 server:
   port: 8095
 
+spring:
+  datasource:
+    driverClassName: ${DRIVER}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: true
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+
 redis:
   host: ${REDISTOGO_URL:localhost}
   port: ${REDISTOGO_PORT:6379}
