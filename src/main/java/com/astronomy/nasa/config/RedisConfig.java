@@ -13,15 +13,15 @@ import java.net.URISyntaxException;
 @Configuration
 public class RedisConfig {
 
-    @Value("${redis.host}")
-    private String redisHostName;
+    @Value("${redis.uri}")
+    private String uri;
 
     @Value("${redis.port}")
     private int redisPort;
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() throws URISyntaxException {
-        URI redisUri = new URI(redisHostName);
+        URI redisUri = new URI(uri);
         JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
         redisConnectionFactory.setHostName(redisUri.getHost());
         redisConnectionFactory.setPort(redisUri.getPort());

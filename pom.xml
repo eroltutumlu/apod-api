@@ -74,7 +74,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>7.0.0</version>
 				<configuration>
-					<url>jdbc:h2:file:./target/foobar</url>
+					<url>jdbc:h2:./data/db</url>
 					<user>sa</user>
 				</configuration>
 				<dependencies>

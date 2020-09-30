@@ -1,15 +1,13 @@
 package com.astronomy.nasa.subscriber;
 
-import com.astronomy.nasa.util.Auditable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "subscriber", schema = "public")
 public class Subscriber extends Auditable<String> {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String surname;

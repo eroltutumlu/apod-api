@@ -2,14 +2,29 @@ server:
   port: 8095
 
 redis:
-  host: localhost
+  uri: redis://dmy:dmy@localhost:6379/
   port: 6379
+
 
 spring:
   datasource:
-    url: jdbc:h2:file:/opt/jpadb
+    url: jdbc:h2:./data/db
     driverClassName: org.h2.Driver
     username: sa
     password: mypass
+    validationQuery: SELECT 1
+    hikari:
+      idle-timeout: 10000
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: true
+    url: jdbc:h2:./data/db
+    user: sa
+    password: mypass
+    baselineOnMigrate: true
+    locations: classpath:/db/migration

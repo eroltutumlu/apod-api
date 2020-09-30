@@ -8,11 +8,12 @@ spring:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     validationQuery: SELECT 1
+    hikari:
+      idle-timeout: 10000
   jpa:
     database: POSTGRESQL
     show-sql: true
     generate-ddl: false
-    properties:
     hibernate:
       ddl-auto: none
   flyway:
