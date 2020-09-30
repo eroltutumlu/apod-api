@@ -3,15 +3,25 @@ server:
 
 spring:
   datasource:
-    driverClassName: ${DRIVER}
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    platform: postgres
+    url: ${POSTGRES_URI}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    validationQuery: SELECT 1
   jpa:
+    database: POSTGRESQL
     show-sql: true
+    generate-ddl: false
+    properties:
+    hibernate:
+      ddl-auto: none
   flyway:
     enabled: true
-    validate-on-migrate: true
+    url: ${POSTGRES_URI}
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    baselineOnMigrate: true
+    locations: classpath:/db/migration
 
 redis:
   host: ${REDISTOGO_URL:localhost}
