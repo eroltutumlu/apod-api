@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     platform: postgres
-    url: ${POSTGRES_URI}
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB_NAME}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     validationQuery: SELECT 1
