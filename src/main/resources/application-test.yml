@@ -18,7 +18,7 @@ spring:
       ddl-auto: none
   flyway:
     enabled: true
-    url: ${POSTGRES_URI}
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB_NAME}
     user: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     baselineOnMigrate: true
