@@ -1,5 +1,7 @@
 package com.astronomy.nasa.subscriber;
 
+import com.astronomy.nasa.entity.Auditable;
+
 import javax.persistence.*;
 
 @Entity
@@ -53,6 +55,10 @@ public class Subscriber extends Auditable<String> {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     @Override
