@@ -18,12 +18,12 @@ public class SubscriberController {
         this.subscriberService = subscriberService;
     }
 
-    @PostMapping(value = "/subscribe")
+    @PostMapping(value = "subscribe")
     public Result<Boolean> subscribe(@RequestBody Subscriber subscriber) {
         return subscriberService.subscribe(subscriber);
     }
 
-    @PutMapping(value = "/unsubscribe/{email}")
+    @PutMapping(value = "unsubscribe/{email}")
     public Result<Boolean> unsubscribe(@PathVariable("email") String email) {
         return subscriberService.unsubscribe(email);
     }
