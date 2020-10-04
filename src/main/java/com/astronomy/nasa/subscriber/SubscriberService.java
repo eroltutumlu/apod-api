@@ -28,7 +28,7 @@ public final class SubscriberService {
         return result;
     }
 
-    public Result<Boolean> unSubscribe(String email) {
+    public Result<Boolean> unsubscribe(String email) {
         Result<Boolean> result = new Result<>(false);
 
         List<Subscriber> subscribers = subscriberRepository.findActiveSubscriberByEmail(email);
@@ -42,5 +42,9 @@ public final class SubscriberService {
         return result;
     }
 
+
+    public List<Subscriber> getAllActiveSubscribers() {
+        return (List<Subscriber>) subscriberRepository.findAll();
+    }
 
 }

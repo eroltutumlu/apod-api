@@ -8,5 +8,5 @@ CREATE TABLE subscriber (
 	last_modified_by varchar(255) NULL,
 	last_modified_date timestamp NULL,
 	is_deleted boolean default false,
-	CONSTRAINT users_pkey PRIMARY KEY (id)
+	CONSTRAINT subscriber_pkey PRIMARY KEY (id)
 );

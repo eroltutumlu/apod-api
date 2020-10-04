@@ -1,10 +1,14 @@
 package com.astronomy.nasa.subscriber;
 
 import com.astronomy.nasa.entity.Result;
+import com.astronomy.nasa.util.apiversion.ApiVersion;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
+@RequestMapping("api")
+@ApiVersion(1)
 public class SubscriberController {
 
     private final SubscriberService subscriberService;
@@ -14,14 +18,19 @@ public class SubscriberController {
         this.subscriberService = subscriberService;
     }
 
-    public Result<Boolean> subscribe(Subscriber subscriber) {
-        // stub
-        return null;
+    @PostMapping(value = "/subscribe")
+    public Result<Boolean> subscribe(@RequestBody Subscriber subscriber) {
+        return subscriberService.subscribe(subscriber);
     }
 
-    public Result<Boolean> unSubscribe(String email) {
-        // stub
-        return null;
+    @PutMapping(value = "/unsubscribe/{email}")
+    public Result<Boolean> unsubscribe(@PathVariable("email") String email) {
+        return subscriberService.unsubscribe(email);
+    }
+
+    @GetMapping(value = "all")
+    public List<Subscriber> getAllActiveSubscribers() {
+        return subscriberService.getAllActiveSubscribers();
     }
 
 }
