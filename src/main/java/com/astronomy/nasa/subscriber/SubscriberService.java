@@ -21,6 +21,7 @@ public final class SubscriberService {
 
         List<Subscriber> subscribers = subscriberRepository.findActiveSubscriberByEmail(subscriber.getEmail());
         if(CollectionUtils.isEmpty(subscribers)) {
+            subscriber.setIsDeleted(false);
             subscriberRepository.save(subscriber);
             result.setResponse(true);
         }
@@ -44,7 +45,7 @@ public final class SubscriberService {
 
 
     public List<Subscriber> getAllActiveSubscribers() {
-        return (List<Subscriber>) subscriberRepository.findAll();
+        return subscriberRepository.getActiveSubscribers();
     }
 
 }

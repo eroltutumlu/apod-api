@@ -11,7 +11,7 @@ public class AuditorAwareImpl implements AuditorAware<String> {
     }
 
     private String getRandomString(){
-        int r = (int) (Math.random()*7);
+        int r = (int) (Math.random()*6);
         String name = new String [] {"John", "Joe", "Qwerty", "Asdf", "George", "Doe"}[r];
         return name;
     }

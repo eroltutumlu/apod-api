@@ -8,10 +8,10 @@ import java.util.List;
 @Repository
 interface SubscriberRepository extends CrudRepository<Subscriber, Long> {
 
-    @Query("from Subscriber WHERE email = ?1 AND isDeleted = false")
+    @Query("from Subscriber WHERE email = ?1 AND is_deleted = false")
     List<Subscriber> findActiveSubscriberByEmail(String email);
 
-    @Query("from Subscriber WHERE isDeleted = false")
+    @Query("from Subscriber WHERE is_deleted = false")
     List<Subscriber> getActiveSubscribers();
 
 }
