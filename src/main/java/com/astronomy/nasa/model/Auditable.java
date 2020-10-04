@@ -1,4 +1,4 @@
-package com.astronomy.nasa.entity;
+package com.astronomy.nasa.model;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;

@@ -1,6 +1,6 @@
 package com.astronomy.nasa.subscriber;
 
-import com.astronomy.nasa.entity.Auditable;
+import com.astronomy.nasa.model.Auditable;
 
 import javax.persistence.*;
 
