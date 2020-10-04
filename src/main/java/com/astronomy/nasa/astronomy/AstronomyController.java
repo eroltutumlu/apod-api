@@ -10,7 +10,6 @@ public class AstronomyController {
 
     private final AstronomyService astronomyService;
 
-    @Autowired
     public AstronomyController(AstronomyService astronomyService) {
         this.astronomyService = astronomyService;
     }

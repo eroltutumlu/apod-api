@@ -25,7 +25,6 @@ public class AstronomyService {
         hashOperations = redisTemplate.opsForHash();
     }
 
-    @Autowired
     public AstronomyService(final RedisTemplate<String, Object> redisTemplate, final RestTemplate restTemplate) {
         this.redisTemplate = redisTemplate;
         this.restTemplate = restTemplate;

@@ -5,7 +5,6 @@ redis:
   uri: redis://dmy:dmy@localhost:6379/
   port: 6379
 
-
 spring:
   datasource:
     url: jdbc:h2:./data/db
@@ -21,6 +20,9 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
+  rabbitmq:
+    host: localhost
+    port: 5672
   flyway:
     enabled: true
     url: jdbc:h2:./data/db

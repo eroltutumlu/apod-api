@@ -1,6 +1,7 @@
 package com.astronomy.nasa.subscriber;
 
 import com.astronomy.nasa.entity.Result;
+import com.astronomy.nasa.exception.EmailAlreadyRegisteredException;
 import com.astronomy.nasa.util.apiversion.ApiVersion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,12 @@ public class SubscriberController {
 
     private final SubscriberService subscriberService;
 
-    @Autowired
-    public SubscriberController(SubscriberService subscriberService) {
+    public SubscriberController(final SubscriberService subscriberService) {
         this.subscriberService = subscriberService;
     }
 
     @PostMapping(value = "subscribe")
-    public Result<Boolean> subscribe(@RequestBody Subscriber subscriber) {
+    public Result<Boolean> subscribe(@RequestBody Subscriber subscriber) throws EmailAlreadyRegisteredException {
         return subscriberService.subscribe(subscriber);
     }
 
