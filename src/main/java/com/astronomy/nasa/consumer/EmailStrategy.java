@@ -1,43 +1,54 @@
 package com.astronomy.nasa.consumer;
 
+import com.astronomy.nasa.astronomy.Astronomy;
+import com.astronomy.nasa.astronomy.AstronomyService;
 import com.astronomy.nasa.interfaces.NotificationStrategy;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-@Component
+@Component("newSubscriberEmailStrategy")
 public class EmailStrategy implements NotificationStrategy {
 
-    @Autowired
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
+    private final TemplateEngine templateEngine;
+    private final AstronomyService astronomyService;
 
-    private String ab;
-
-    public String getAb() {
-        return ab;
-    }
-
-    public void setAb(String ab) {
-        this.ab = ab;
+    public EmailStrategy(JavaMailSender mailSender, TemplateEngine templateEngine,
+                         AstronomyService astronomyService) {
+        this.mailSender = mailSender;
+        this.templateEngine = templateEngine;
+        this.astronomyService = astronomyService;
     }
 
     @Override
-    public void notificate() throws MessagingException {
+    public void notificate(String email) throws MessagingException {
 
         final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
         final MimeMessageHelper message =
-                new MimeMessageHelper(mimeMessage, true, "UTF-8"); // true = multipart
-        message.setSubject("Example HTML email with inline image");
+                new MimeMessageHelper(mimeMessage, true, "UTF-8");
+        message.setSubject("Day of picture from APOD NASA");
         message.setFrom("eroltutumlu@example.com");
         message.setTo("eroltutumlu@gmail.com");
 
-        // Create the HTML body using Thymeleaf
-        final String htmlContent = "<h1>HI!!</h1>";
+        DateFormat dform = new SimpleDateFormat("YYYY-MM-dd");
+        Date obj = new Date();
+
+        Astronomy astronomy = astronomyService.getDayOfAstronomyPicture(dform.format(obj));
+
+        Context context = new Context();
+        context.setVariable("subject", astronomy.getTitle());
+        context.setVariable("exp", astronomy.getExplanation());
+        context.setVariable("src", astronomy.getUrl());
+
+        String htmlContent = templateEngine.process("mailTemplate", context);
         message.setText(htmlContent, true);
 
         mailSender.send(mimeMessage);

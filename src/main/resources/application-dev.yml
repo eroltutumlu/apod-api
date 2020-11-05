@@ -16,6 +16,7 @@ spring:
     port: 587
     username: *
     password: *
+    default-encodig: UTF-8
     properties:
       mail:
         smtp:
