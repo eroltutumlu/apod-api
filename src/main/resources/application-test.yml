@@ -10,6 +10,23 @@ spring:
     validationQuery: SELECT 1
     hikari:
       idle-timeout: 10000
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_DUMMY_PASSWORD}
+    default-encodig: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+    smtp:
+      auth: true
   jpa:
     database: POSTGRESQL
     show-sql: true
