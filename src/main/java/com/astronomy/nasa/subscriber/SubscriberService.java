@@ -3,6 +3,7 @@ package com.astronomy.nasa.subscriber;
 import com.astronomy.nasa.entity.Result;
 import com.astronomy.nasa.exception.EmailAlreadyRegisteredException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import java.util.List;
@@ -15,6 +16,7 @@ public final class SubscriberService {
     private final RabbitTemplate rabbitTemplate;
     private final SubscriberRepository subscriberRepository;
 
+    @Autowired
     public SubscriberService(final RabbitTemplate rabbitTemplate, final SubscriberRepository subscriberRepository) {
         this.rabbitTemplate = rabbitTemplate;
         this.subscriberRepository = subscriberRepository;

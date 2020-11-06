@@ -3,6 +3,7 @@ package com.astronomy.nasa.consumer;
 import com.astronomy.nasa.astronomy.Astronomy;
 import com.astronomy.nasa.astronomy.AstronomyService;
 import com.astronomy.nasa.interfaces.NotificationStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ public class EmailStrategy implements NotificationStrategy {
     private final TemplateEngine templateEngine;
     private final AstronomyService astronomyService;
 
+    @Autowired
     public EmailStrategy(JavaMailSender mailSender, TemplateEngine templateEngine,
                          AstronomyService astronomyService) {
         this.mailSender = mailSender;

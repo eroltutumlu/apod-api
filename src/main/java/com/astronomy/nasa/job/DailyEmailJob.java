@@ -4,6 +4,7 @@ import com.astronomy.nasa.astronomy.Astronomy;
 import com.astronomy.nasa.astronomy.AstronomyService;
 import com.astronomy.nasa.subscriber.Subscriber;
 import com.astronomy.nasa.subscriber.SubscriberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,6 +26,7 @@ public class DailyEmailJob {
     private final JavaMailSender mailSender;
     private final TemplateEngine templateEngine;
 
+    @Autowired
     public DailyEmailJob(final SubscriberService subscriberService, final AstronomyService astronomyService,
                          final JavaMailSender mailSender, final TemplateEngine templateEngine) {
         this.subscriberService = subscriberService;
