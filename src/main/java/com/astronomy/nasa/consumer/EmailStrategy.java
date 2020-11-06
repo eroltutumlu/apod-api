@@ -18,17 +18,12 @@ import java.util.Date;
 @Component("newSubscriberEmailStrategy")
 public class EmailStrategy implements NotificationStrategy {
 
-    private final JavaMailSender mailSender;
-    private final TemplateEngine templateEngine;
-    private final AstronomyService astronomyService;
-
     @Autowired
-    public EmailStrategy(JavaMailSender mailSender, TemplateEngine templateEngine,
-                         AstronomyService astronomyService) {
-        this.mailSender = mailSender;
-        this.templateEngine = templateEngine;
-        this.astronomyService = astronomyService;
-    }
+    private JavaMailSender mailSender;
+    @Autowired
+    private TemplateEngine templateEngine;
+    @Autowired
+    private AstronomyService astronomyService;
 
     @Override
     public void notificate(String email) throws MessagingException {

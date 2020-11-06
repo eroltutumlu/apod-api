@@ -13,14 +13,10 @@ import static com.astronomy.nasa.constant.RabbitMq.EXCHANGE_NAME;
 @Service
 public final class SubscriberService {
 
-    private final RabbitTemplate rabbitTemplate;
-    private final SubscriberRepository subscriberRepository;
-
     @Autowired
-    public SubscriberService(final RabbitTemplate rabbitTemplate, final SubscriberRepository subscriberRepository) {
-        this.rabbitTemplate = rabbitTemplate;
-        this.subscriberRepository = subscriberRepository;
-    }
+    private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private SubscriberRepository subscriberRepository;
 
     public Result<Boolean> subscribe(Subscriber subscriber) throws EmailAlreadyRegisteredException {
         Result<Boolean> result = new Result<>(false);

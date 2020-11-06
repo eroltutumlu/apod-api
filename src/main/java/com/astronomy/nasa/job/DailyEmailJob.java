@@ -21,19 +21,14 @@ import java.util.List;
 @Component
 public class DailyEmailJob {
 
-    private final SubscriberService subscriberService;
-    private final AstronomyService astronomyService;
-    private final JavaMailSender mailSender;
-    private final TemplateEngine templateEngine;
-
     @Autowired
-    public DailyEmailJob(final SubscriberService subscriberService, final AstronomyService astronomyService,
-                         final JavaMailSender mailSender, final TemplateEngine templateEngine) {
-        this.subscriberService = subscriberService;
-        this.astronomyService = astronomyService;
-        this.mailSender = mailSender;
-        this.templateEngine = templateEngine;
-    }
+    private SubscriberService subscriberService;
+    @Autowired
+    private AstronomyService astronomyService;
+    @Autowired
+    private JavaMailSender mailSender;
+    @Autowired
+    private TemplateEngine templateEngine;
 
     @Scheduled(cron = "0 9 * * *")
     public void sendDailyEmail() throws MessagingException {

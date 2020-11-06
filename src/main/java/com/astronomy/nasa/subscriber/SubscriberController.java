@@ -12,11 +12,8 @@ import java.util.List;
 @ApiVersion(1)
 public class SubscriberController {
 
-    private final SubscriberService subscriberService;
-
-    public SubscriberController(final SubscriberService subscriberService) {
-        this.subscriberService = subscriberService;
-    }
+    @Autowired
+    private SubscriberService subscriberService;
 
     @PostMapping(value = "subscribe")
     public Result<Boolean> subscribe(@RequestBody Subscriber subscriber) throws EmailAlreadyRegisteredException {

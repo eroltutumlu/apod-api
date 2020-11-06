@@ -1,5 +1,6 @@
 package com.astronomy.nasa.astronomy;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpMethod;
@@ -23,6 +24,7 @@ public class AstronomyService {
         hashOperations = redisTemplate.opsForHash();
     }
 
+    @Autowired
     public AstronomyService(final RedisTemplate<String, Object> redisTemplate, final RestTemplate restTemplate) {
         this.redisTemplate = redisTemplate;
         this.restTemplate = restTemplate;
