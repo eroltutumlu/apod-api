@@ -11,9 +11,8 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import static com.astronomy.nasa.util.DateUtils.getCurrentDateFormatted;
 
 @Component("newSubscriberEmailStrategy")
 public class EmailStrategy implements NotificationStrategy {
@@ -35,10 +34,9 @@ public class EmailStrategy implements NotificationStrategy {
         message.setFrom("eroltutumlu@example.com");
         message.setTo("eroltutumlu@gmail.com");
 
-        DateFormat dform = new SimpleDateFormat("YYYY-MM-dd");
-        Date obj = new Date();
+        final String currentDate = getCurrentDateFormatted("");
 
-        Astronomy astronomy = astronomyService.getDayOfAstronomyPicture(dform.format(obj));
+        Astronomy astronomy = astronomyService.getDayOfAstronomyPicture(currentDate);
 
         Context context = new Context();
         context.setVariable("subject", astronomy.getTitle());
