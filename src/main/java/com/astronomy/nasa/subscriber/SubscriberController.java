@@ -10,23 +10,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api")
-@ApiVersion(1)
 public class SubscriberController {
 
     @Autowired
     private SubscriberService subscriberService;
 
-    @PostMapping(value = "subscribe")
+    @PostMapping(value = "/subscribe")
     public Result<Boolean> subscribe(@RequestBody Subscriber subscriber) throws EmailAlreadyRegisteredException {
         return subscriberService.subscribe(subscriber);
     }
 
-    @RequestMapping(value = "unsubscribe/{email}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/unsubscribe/{email}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Result<Boolean> unsubscribe(@PathVariable("email") String email) {
         return subscriberService.unsubscribe(email);
     }
 
-    @GetMapping(value = "all")
+    @GetMapping(value = "/all")
     public List<Subscriber> getAllActiveSubscribers() {
         return subscriberService.getAllActiveSubscribers();
     }
