@@ -33,11 +33,6 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
-  rabbitmq:
-    host: ${CLOUDAMQP_HOST}
-    port: ${CLOUDAMQP_PORT}
-    username: ${CLOUDAMQP_USERNAME}
-    password: ${CLOUDAMQP_PASSWORD}
   flyway:
     enabled: true
     url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB_NAME}
@@ -49,3 +44,6 @@ spring:
 redis:
   host: ${REDISTOGO_URL:localhost}
   port: ${REDISTOGO_PORT:6379}
+
+rabbitmq:
+  CLOUDAMQP_URL: ${CLOUDAMQP_URL:localhost}

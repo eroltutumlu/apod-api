@@ -26,7 +26,7 @@ public class RedisConfig {
         redisConnectionFactory.setHostName(redisUri.getHost());
         redisConnectionFactory.setPort(redisUri.getPort());
         redisConnectionFactory.setTimeout(Protocol.DEFAULT_TIMEOUT);
-        redisConnectionFactory.setPassword(redisUri.getUserInfo().split(":",2)[1]);
+        //redisConnectionFactory.setPassword(redisUri.getUserInfo().split(":",2)[1]);
         return redisConnectionFactory;
     }
 

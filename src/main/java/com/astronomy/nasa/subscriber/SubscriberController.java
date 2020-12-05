@@ -4,6 +4,7 @@ import com.astronomy.nasa.entity.Result;
 import com.astronomy.nasa.exception.EmailAlreadyRegisteredException;
 import com.astronomy.nasa.util.apiversion.ApiVersion;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class SubscriberController {
         return subscriberService.subscribe(subscriber);
     }
 
-    @PutMapping(value = "unsubscribe/{email}")
-    public Result<Boolean> unsubscribe(@PathVariable("email") String email) {
+    @RequestMapping(value = "unsubscribe/{email}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Result<Boolean> unsubscribe(@PathVariable("email") String email) {
         return subscriberService.unsubscribe(email);
     }
 
