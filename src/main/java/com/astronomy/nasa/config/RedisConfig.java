@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 @Configuration
 public class RedisConfig {
 
-    @Value("${redis.uri}")
+    @Value("${redis.host}")
     private String uri;
 
     @Value("${redis.port}")
