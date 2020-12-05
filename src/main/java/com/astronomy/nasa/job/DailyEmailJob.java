@@ -14,7 +14,6 @@ import org.thymeleaf.context.Context;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
-
 import static com.astronomy.nasa.util.DateUtils.getCurrentDateFormatted;
 
 @Component
@@ -29,7 +28,7 @@ public class DailyEmailJob {
     @Autowired
     private TemplateEngine templateEngine;
 
-    @Scheduled(cron = "*/50 * * * * *")
+    @Scheduled(cron = "0 0 7 * * *")
     public void sendDailyEmail() throws MessagingException {
         List<Subscriber> subscribers = subscriberService.getAllActiveSubscribers();
         for (Subscriber subscriber: subscribers) {
@@ -38,8 +37,8 @@ public class DailyEmailJob {
             final MimeMessageHelper message =
                     new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setSubject("Day of picture from APOD NASA");
-            message.setFrom("eroltutumlu@example.com");
-            message.setTo("eroltutumlu@gmail.com");
+            message.setFrom("developerfull5@gmail.com");
+            message.setTo(email);
 
             final String currentDate = getCurrentDateFormatted("");
             Astronomy astronomy = astronomyService.getDayOfAstronomyPicture(currentDate);
