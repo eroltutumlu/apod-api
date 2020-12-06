@@ -28,11 +28,11 @@ public class DailyEmailJob {
     @Autowired
     private TemplateEngine templateEngine;
 
-    @Scheduled(cron = "0 0 7 * * *")
+    @Scheduled(cron = "* 30 07 * * *", zone="Europe/Istanbul")
     public void sendDailyEmail() throws MessagingException {
         List<Subscriber> subscribers = subscriberService.getAllActiveSubscribers();
         for (Subscriber subscriber: subscribers) {
-            String email = subscriber.getEmail();
+            final String email = subscriber.getEmail();
             final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
             final MimeMessageHelper message =
                     new MimeMessageHelper(mimeMessage, true, "UTF-8");
