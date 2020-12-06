@@ -31,8 +31,8 @@ public class EmailStrategy implements NotificationStrategy {
         final MimeMessageHelper message =
                 new MimeMessageHelper(mimeMessage, true, "UTF-8");
         message.setSubject("Day of picture from APOD NASA");
-        message.setFrom("eroltutumlu@example.com");
-        message.setTo("eroltutumlu@gmail.com");
+        message.setFrom("developerfull5@gmail.com");
+        message.setTo(email);
 
         final String currentDate = getCurrentDateFormatted("");
 

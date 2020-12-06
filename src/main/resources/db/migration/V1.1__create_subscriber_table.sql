@@ -1,5 +1,5 @@
 CREATE TABLE subscriber (
-	id int8 NOT NULL,
+	id SERIAL NOT NULL,
 	"name" varchar(255) NULL,
 	"surname" varchar(255) NULL,
     "email" varchar(255) NULL,

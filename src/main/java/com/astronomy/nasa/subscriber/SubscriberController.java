@@ -20,9 +20,9 @@ public class SubscriberController {
         return subscriberService.subscribe(subscriber);
     }
 
-    @RequestMapping(value = "/unsubscribe/{email}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Result<Boolean> unsubscribe(@PathVariable("email") String email) {
-        return subscriberService.unsubscribe(email);
+    @PutMapping(value = "/unsubscribe")
+    public Result<Boolean> unsubscribe(@RequestBody Subscriber subscriber) {
+        return subscriberService.unsubscribe(subscriber);
     }
 
     @GetMapping(value = "/all")

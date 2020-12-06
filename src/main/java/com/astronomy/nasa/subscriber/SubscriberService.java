@@ -36,15 +36,14 @@ public final class SubscriberService {
         return result;
     }
 
-    public Result<Boolean> unsubscribe(String email) {
-        Result<Boolean> result = new Result<>(false);
+    public Result<Boolean> unsubscribe(Subscriber sub) {
+        Result<Boolean> result = new Result<>(true);
 
-        List<Subscriber> subscribers = subscriberRepository.findActiveSubscriberByEmail(email);
+        List<Subscriber> subscribers = subscriberRepository.findActiveSubscriberByEmail(sub.getEmail());
         if(CollectionUtils.isEmpty(subscribers) == false) {
             Subscriber subscriber = subscribers.get(0);
             subscriber.setIsDeleted(true);
             subscriberRepository.save(subscriber);
-            result.setResponse(true);
         }
 
         return result;
