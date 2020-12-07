@@ -28,7 +28,7 @@ public class DailyEmailJob {
     @Autowired
     private TemplateEngine templateEngine;
 
-    @Scheduled(cron = "* 30 07 * * *", zone="Europe/Istanbul")
+    @Scheduled(cron = "* 15 8 * * *", zone="Europe/Istanbul")
     public void sendDailyEmail() throws MessagingException {
         List<Subscriber> subscribers = subscriberService.getAllActiveSubscribers();
         for (Subscriber subscriber: subscribers) {
